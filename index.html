@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="ex05.js"></script>
+    <script>
+      function ex01() {
+        var nome = prompt("Qual seu nome?");
+        var idade = prompt("Qual sua idade?");
+
+        alert(`${nome}, ${idade} anos`);
+      }
+
+      function ex02() {
+        var produto = prompt("Digite o código do produto");
+
+        if (
+          confirm(
+            `Tem certeza que deseja excluir o produto de código ${produto}?`
+          )
+        ) {
+          alert(`Produto de código ${produto} foi excluido`);
+        } else {
+          alert("Ação cancelada");
+        }
+      }
+
+      function ex03() {
+        var div = document.querySelector("#ex03");
+        for (i = 1; i < 7; i++) {
+          let hx = document.createElement(`h${i}`);
+          let text = document.createTextNode(`Titulo ${i}`);
+          hx.appendChild(text);
+          div.appendChild(hx);
+        }
+      }
+
+      function excluirProduto() {
+        ex02();
+      }
+
+      function t(event) {
+        event.preventDefault();
+        alert();
+      }
+
+      function ex7() {
+        var peso = document.querySelector("#peso").value;
+        var altura = document.querySelector("#altura").value;
+
+        var a = imc(peso, altura);
+        alert(`seu imc é de ${a}`);
+      }
+
+      function ex08() {
+        let continentes = [
+          {
+            nome: "Americano",
+            paises: ["Brasil", "EUA", "Canadá", "Uruguai"],
+          },
+          {
+            nome: "Europeu",
+            paises: ["Itália", "Irlanda", "França"],
+          },
+          {
+            nome: "Asiático",
+            paises: ["China", "Japão"],
+          },
+        ];
+        var ul = document.querySelector("#ex08");
+        continentes.map((continente) => {
+          let li = document.createElement("li");
+          let liText = document.createTextNode(continente.nome);
+          li.appendChild(liText);
+
+          let ol = document.createElement("ol");
+          continente.paises.map((pais) => {
+            let liPais = document.createElement("li");
+            let liPaisText = document.createTextNode(pais);
+            liPais.appendChild(liPaisText);
+            ol.appendChild(liPais);
+          });
+          li.appendChild(ol);
+
+          ul.appendChild(li);
+        });
+      }
+
+      function ex09() {
+        var div = document.querySelector("#ex09");
+        let span = document.createElement("span");
+        let text = document.createTextNode(navigator.appVersion);
+        span.appendChild(text);
+        let lang = document.createTextNode(navigator.language);
+        span.appendChild(lang);
+        div.appendChild(span);
+      }
+    </script>
+    <div>
+      <button onclick="ex01()">Ex 1</button>
+      <button onclick="ex02()">Ex 2</button>
+      <button onclick="ex03()">Ex 3</button>
+      <button onclick="excluirProduto()">Ex 5</button>
+      <button onclick="ex06()">Ex 6</button>
+      <button onclick="ex08()">Ex 8</button>
+      <button onclick="ex09()">Ex 9</button>
+    </div>
+
+    <div id="ex03"></div>
+    <br />
+    <br />
+    <br />
+
+    <div>
+      <h1>Ex07</h1>
+      <form>
+        <label for="peso">Peso</label>
+        <br />
+        <input type="text" name="Peso" id="peso" />
+        <br />
+        <label for="altura">Altura</label>
+        <br />
+        <input type="text" name="Altura" id="altura" />
+        <br />
+        <button onclick="ex7()">Calcular</button>
+      </form>
+    </div>
+
+    <div>
+      <ul id="ex08"></ul>
+    </div>
+
+    <div id="ex09"></div>
+  </body>
+</html>
